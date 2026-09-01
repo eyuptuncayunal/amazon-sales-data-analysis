@@ -1,0 +1,38 @@
+-- 1. Detecting Total Operational Loss from Cancelled Orders (Specific Categories & Amazon Fulfilment)
+-- This query identifies the financial impact of cancelled 'Set' and 'Kurta' categories fulfilled directly by Amazon.
+SELECT 
+    SUM(CAST("Amount" AS numeric)) AS total_cancellation_loss
+FROM 
+    amazon_sale_report
+WHERE 
+    "Status" = 'Cancelled'
+    AND "Category" IN ('Set', 'kurta')
+    AND "Fulfilment" = 'Amazon'
+    AND "Amount" != '';
+
+
+
+
+-- 2. General Revenue Breakdown by Sales Channel (B2B vs B2C)
+-- Identifying that over 99% of the revenue comes from B2C (Retail) rather than B2B.
+SELECT 
+    "B2B",
+    SUM(CAST("Amount" AS numeric)) AS total_revenue
+FROM 
+    amazon_sale_report
+WHERE 
+    "Status" = 'Shipped'
+    AND "Amount" != ''
+GROUP BY 
+    "B2B";
+
+
+
+
+-- 3. Total Successful Order Count
+SELECT 
+    COUNT(DISTINCT "Order ID") AS successful_order_count
+FROM 
+    amazon_sale_report
+WHERE 
+    "Status" = 'Shipped';
