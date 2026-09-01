@@ -1,8 +1,3 @@
-# amazon-sales-data-analysis
-End-to-end data analysis of Amazon e-commerce sales using PostgreSQL and Power BI to detect operational losses.
-
-# E-Commerce Operational Profitability & Logistics Analysis 📊
-
 ## 🎯 Project Objective
 This project analyzes a comprehensive e-commerce dataset to identify operational bottlenecks and profitability leaks. Instead of focusing solely on vanity metrics (like top-selling products), this analysis targets **logistical failures** and **unrealized B2B potential** to provide actionable business intelligence.
 
